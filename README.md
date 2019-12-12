@@ -2,7 +2,7 @@
 This repository contains my solution for the [Predict an Ad's Success](https://www.hackerearth.com/challenges/competitive/predict-ad-success-hackerearth-machine-learning-challenge/) competition on HackerEarth.
 
 ## Development
-My solution is implemented in [RapidMiner Studio](https://rapidminer.com/products/studio/). Open the solution by creating a new repository with the path set to the `repository` directory and then opening the "Workspace" process.
+My solution is implemented in [RapidMiner Studio](https://rapidminer.com/products/studio/). Open the solution by creating a new repository with the path set to the `repository` directory. My solution is implemented in the "Workspace" process. Because of RapidMiner Studio limitations you'll have to manually make sure that the path of the "Write CSV" operator is a valid absolute path.
 
 ## Submitting a solution
 Submitting a solution should go like this:
