@@ -15,75 +15,20 @@
       <operator activated="true" class="retrieve" compatibility="9.5.001" expanded="true" height="68" name="Retrieve Train" width="90" x="45" y="34">
         <parameter key="repository_entry" value="data/Train"/>
       </operator>
-      <operator activated="true" class="concurrency:loop_values" compatibility="9.5.001" expanded="true" height="82" name="Loop Values" width="90" x="179" y="34">
-        <parameter key="attribute" value="netgain"/>
-        <parameter key="iteration_macro" value="loop_value"/>
-        <parameter key="reuse_results" value="false"/>
-        <parameter key="enable_parallel_execution" value="true"/>
-        <process expanded="true">
-          <operator activated="true" class="filter_examples" compatibility="9.5.001" expanded="true" height="103" name="Filter Examples" width="90" x="45" y="34">
-            <parameter key="parameter_expression" value=""/>
-            <parameter key="condition_class" value="custom_filters"/>
-            <parameter key="invert_filter" value="false"/>
-            <list key="filters_list">
-              <parameter key="filters_entry_key" value="netgain.equals.%{loop_value}"/>
-            </list>
-            <parameter key="filters_logic_and" value="true"/>
-            <parameter key="filters_check_metadata" value="true"/>
-          </operator>
-          <operator activated="true" class="branch" compatibility="9.5.001" expanded="true" height="82" name="Branch" width="90" x="179" y="34">
-            <parameter key="condition_type" value="max_examples"/>
-            <parameter key="condition_value" value="5000"/>
-            <parameter key="expression" value=""/>
-            <parameter key="io_object" value="ANOVAMatrix"/>
-            <parameter key="return_inner_output" value="true"/>
-            <process expanded="true">
-              <connect from_port="condition" to_port="input 1"/>
-              <portSpacing port="source_condition" spacing="0"/>
-              <portSpacing port="source_input 1" spacing="0"/>
-              <portSpacing port="sink_input 1" spacing="0"/>
-              <portSpacing port="sink_input 2" spacing="0"/>
-            </process>
-            <process expanded="true">
-              <operator activated="true" class="sample" compatibility="9.5.001" expanded="true" height="82" name="Sample" width="90" x="45" y="34">
-                <parameter key="sample" value="absolute"/>
-                <parameter key="balance_data" value="false"/>
-                <parameter key="sample_size" value="5000"/>
-                <parameter key="sample_ratio" value="0.1"/>
-                <parameter key="sample_probability" value="0.1"/>
-                <list key="sample_size_per_class"/>
-                <list key="sample_ratio_per_class"/>
-                <list key="sample_probability_per_class"/>
-                <parameter key="use_local_random_seed" value="false"/>
-                <parameter key="local_random_seed" value="1992"/>
-              </operator>
-              <connect from_port="condition" to_op="Sample" to_port="example set input"/>
-              <connect from_op="Sample" from_port="example set output" to_port="input 1"/>
-              <portSpacing port="source_condition" spacing="0"/>
-              <portSpacing port="source_input 1" spacing="0"/>
-              <portSpacing port="sink_input 1" spacing="0"/>
-              <portSpacing port="sink_input 2" spacing="0"/>
-            </process>
-          </operator>
-          <connect from_port="input 1" to_op="Filter Examples" to_port="example set input"/>
-          <connect from_op="Filter Examples" from_port="example set output" to_op="Branch" to_port="condition"/>
-          <connect from_op="Branch" from_port="input 1" to_port="output 1"/>
-          <portSpacing port="source_input 1" spacing="0"/>
-          <portSpacing port="source_input 2" spacing="0"/>
-          <portSpacing port="sink_output 1" spacing="0"/>
-          <portSpacing port="sink_output 2" spacing="0"/>
-        </process>
+      <operator activated="true" class="productivity:execute_process" compatibility="9.5.001" expanded="true" height="68" name="Prepare Train Data" width="90" x="179" y="34">
+        <parameter key="process_location" value="Prepare data"/>
+        <parameter key="use_input" value="true"/>
+        <parameter key="store_output" value="false"/>
+        <parameter key="propagate_metadata_recursively" value="true"/>
+        <parameter key="cache_process" value="true"/>
+        <list key="macros"/>
+        <parameter key="fail_for_unknown_macros" value="true"/>
       </operator>
-      <operator activated="true" class="append" compatibility="9.5.001" expanded="true" height="82" name="Append" width="90" x="313" y="34">
-        <parameter key="datamanagement" value="double_array"/>
-        <parameter key="data_management" value="auto"/>
-        <parameter key="merge_type" value="all"/>
-      </operator>
-      <operator activated="true" class="concurrency:cross_validation" compatibility="9.5.001" expanded="true" height="145" name="Cross Validation" width="90" x="447" y="34">
+      <operator activated="true" class="concurrency:cross_validation" compatibility="9.5.001" expanded="true" height="145" name="Cross Validation" width="90" x="313" y="34">
         <parameter key="split_on_batch_attribute" value="false"/>
         <parameter key="leave_one_out" value="false"/>
-        <parameter key="number_of_folds" value="25"/>
-        <parameter key="sampling_type" value="automatic"/>
+        <parameter key="number_of_folds" value="5"/>
+        <parameter key="sampling_type" value="shuffled sampling"/>
         <parameter key="use_local_random_seed" value="false"/>
         <parameter key="local_random_seed" value="1992"/>
         <parameter key="enable_parallel_execution" value="true"/>
@@ -91,7 +36,7 @@
           <operator activated="false" class="concurrency:parallel_random_forest" compatibility="9.5.001" expanded="true" height="103" name="Random Forest" width="90" x="45" y="187">
             <parameter key="number_of_trees" value="100"/>
             <parameter key="criterion" value="gain_ratio"/>
-            <parameter key="maximal_depth" value="10"/>
+            <parameter key="maximal_depth" value="25"/>
             <parameter key="apply_pruning" value="true"/>
             <parameter key="confidence" value="0.1"/>
             <parameter key="apply_prepruning" value="true"/>
@@ -107,8 +52,8 @@
             <parameter key="local_random_seed" value="1992"/>
             <parameter key="enable_parallel_execution" value="true"/>
           </operator>
-          <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.5.001" expanded="true" height="103" name="Decision Tree" width="90" x="45" y="34">
-            <parameter key="criterion" value="accuracy"/>
+          <operator activated="false" class="concurrency:parallel_decision_tree" compatibility="9.5.001" expanded="true" height="103" name="Decision Tree" width="90" x="179" y="187">
+            <parameter key="criterion" value="gain_ratio"/>
             <parameter key="maximal_depth" value="7"/>
             <parameter key="apply_pruning" value="true"/>
             <parameter key="confidence" value="0.1"/>
@@ -118,8 +63,20 @@
             <parameter key="minimal_size_for_split" value="4"/>
             <parameter key="number_of_prepruning_alternatives" value="3"/>
           </operator>
-          <connect from_port="training set" to_op="Decision Tree" to_port="training set"/>
-          <connect from_op="Decision Tree" from_port="model" to_port="model"/>
+          <operator activated="true" class="neural_net" compatibility="9.5.001" expanded="true" height="82" name="Neural Net" width="90" x="45" y="34">
+            <list key="hidden_layers"/>
+            <parameter key="training_cycles" value="200"/>
+            <parameter key="learning_rate" value="0.01"/>
+            <parameter key="momentum" value="0.9"/>
+            <parameter key="decay" value="false"/>
+            <parameter key="shuffle" value="true"/>
+            <parameter key="normalize" value="true"/>
+            <parameter key="error_epsilon" value="1.0E-4"/>
+            <parameter key="use_local_random_seed" value="false"/>
+            <parameter key="local_random_seed" value="1992"/>
+          </operator>
+          <connect from_port="training set" to_op="Neural Net" to_port="training set"/>
+          <connect from_op="Neural Net" from_port="model" to_port="model"/>
           <portSpacing port="source_training set" spacing="0"/>
           <portSpacing port="sink_model" spacing="0"/>
           <portSpacing port="sink_through 1" spacing="0"/>
@@ -168,14 +125,23 @@
           <portSpacing port="sink_performance 2" spacing="0"/>
         </process>
       </operator>
-      <operator activated="true" class="retrieve" compatibility="9.5.001" expanded="true" height="68" name="Retrieve Test" width="90" x="447" y="238">
+      <operator activated="true" class="retrieve" compatibility="9.5.001" expanded="true" height="68" name="Retrieve Test" width="90" x="45" y="238">
         <parameter key="repository_entry" value="data/Test"/>
       </operator>
-      <operator activated="true" class="apply_model" compatibility="9.5.001" expanded="true" height="82" name="Apply Model (2)" width="90" x="581" y="136">
+      <operator activated="true" class="productivity:execute_process" compatibility="9.5.001" expanded="true" height="68" name="Prepare Test Data" width="90" x="179" y="238">
+        <parameter key="process_location" value="Prepare data"/>
+        <parameter key="use_input" value="true"/>
+        <parameter key="store_output" value="false"/>
+        <parameter key="propagate_metadata_recursively" value="true"/>
+        <parameter key="cache_process" value="true"/>
+        <list key="macros"/>
+        <parameter key="fail_for_unknown_macros" value="true"/>
+      </operator>
+      <operator activated="true" class="apply_model" compatibility="9.5.001" expanded="true" height="82" name="Apply Final Model" width="90" x="447" y="136">
         <list key="application_parameters"/>
         <parameter key="create_view" value="false"/>
       </operator>
-      <operator activated="true" class="select_attributes" compatibility="9.5.001" expanded="true" height="82" name="Select Attributes" width="90" x="715" y="238">
+      <operator activated="true" class="select_attributes" compatibility="9.5.001" expanded="true" height="82" name="Select Attributes" width="90" x="581" y="238">
         <parameter key="attribute_filter_type" value="subset"/>
         <parameter key="attribute" value=""/>
         <parameter key="attributes" value="id|prediction(netgain)"/>
@@ -189,12 +155,12 @@
         <parameter key="invert_selection" value="false"/>
         <parameter key="include_special_attributes" value="true"/>
       </operator>
-      <operator activated="true" class="rename" compatibility="9.5.001" expanded="true" height="82" name="Rename" width="90" x="849" y="238">
+      <operator activated="true" class="rename" compatibility="9.5.001" expanded="true" height="82" name="Rename" width="90" x="715" y="238">
         <parameter key="old_name" value="prediction(netgain)"/>
         <parameter key="new_name" value="netgain"/>
         <list key="rename_additional_attributes"/>
       </operator>
-      <operator activated="true" class="write_csv" compatibility="9.5.001" expanded="true" height="82" name="Write CSV" width="90" x="983" y="238">
+      <operator activated="true" class="write_csv" compatibility="9.5.001" expanded="true" height="82" name="Write CSV" width="90" x="849" y="238">
         <parameter key="csv_file" value="/home/jasper/Projects/predict-ad-success/submission/result.csv"/>
         <parameter key="column_separator" value=","/>
         <parameter key="write_attribute_names" value="true"/>
@@ -203,14 +169,14 @@
         <parameter key="append_to_file" value="false"/>
         <parameter key="encoding" value="SYSTEM"/>
       </operator>
-      <connect from_op="Retrieve Train" from_port="output" to_op="Loop Values" to_port="input 1"/>
-      <connect from_op="Loop Values" from_port="output 1" to_op="Append" to_port="example set 1"/>
-      <connect from_op="Append" from_port="merged set" to_op="Cross Validation" to_port="example set"/>
-      <connect from_op="Cross Validation" from_port="model" to_op="Apply Model (2)" to_port="model"/>
+      <connect from_op="Retrieve Train" from_port="output" to_op="Prepare Train Data" to_port="input 1"/>
+      <connect from_op="Prepare Train Data" from_port="result 1" to_op="Cross Validation" to_port="example set"/>
+      <connect from_op="Cross Validation" from_port="model" to_op="Apply Final Model" to_port="model"/>
       <connect from_op="Cross Validation" from_port="performance 1" to_port="result 2"/>
-      <connect from_op="Retrieve Test" from_port="output" to_op="Apply Model (2)" to_port="unlabelled data"/>
-      <connect from_op="Apply Model (2)" from_port="labelled data" to_op="Select Attributes" to_port="example set input"/>
-      <connect from_op="Apply Model (2)" from_port="model" to_port="result 1"/>
+      <connect from_op="Retrieve Test" from_port="output" to_op="Prepare Test Data" to_port="input 1"/>
+      <connect from_op="Prepare Test Data" from_port="result 1" to_op="Apply Final Model" to_port="unlabelled data"/>
+      <connect from_op="Apply Final Model" from_port="labelled data" to_op="Select Attributes" to_port="example set input"/>
+      <connect from_op="Apply Final Model" from_port="model" to_port="result 1"/>
       <connect from_op="Select Attributes" from_port="example set output" to_op="Rename" to_port="example set input"/>
       <connect from_op="Rename" from_port="example set output" to_op="Write CSV" to_port="input"/>
       <portSpacing port="source_input 1" spacing="0"/>
