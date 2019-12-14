@@ -18,7 +18,7 @@
       <operator activated="true" class="concurrency:optimize_parameters_grid" compatibility="9.5.001" expanded="true" height="124" name="Optimize Parameters (Grid)" width="90" x="179" y="34">
         <list key="parameters">
           <parameter key="Decision Tree.maximal_depth" value="[2;100;100;linear]"/>
-          <parameter key="Cross Validation.number_of_folds" value="[5;10;1;linear]"/>
+          <parameter key="Decision Tree.criterion" value="gain_ratio,information_gain,gini_index,accuracy"/>
         </list>
         <parameter key="error_handling" value="fail on error"/>
         <parameter key="log_performance" value="true"/>
@@ -35,21 +35,7 @@
             <parameter key="local_random_seed" value="1992"/>
             <parameter key="enable_parallel_execution" value="true"/>
             <process expanded="true">
-              <operator activated="true" class="select_attributes" compatibility="9.5.001" expanded="true" height="82" name="Select Attributes (2)" width="90" x="45" y="34">
-                <parameter key="attribute_filter_type" value="subset"/>
-                <parameter key="attribute" value=""/>
-                <parameter key="attributes" value="ratings"/>
-                <parameter key="use_except_expression" value="false"/>
-                <parameter key="value_type" value="attribute_value"/>
-                <parameter key="use_value_type_exception" value="false"/>
-                <parameter key="except_value_type" value="time"/>
-                <parameter key="block_type" value="attribute_block"/>
-                <parameter key="use_block_type_exception" value="false"/>
-                <parameter key="except_block_type" value="value_matrix_row_start"/>
-                <parameter key="invert_selection" value="true"/>
-                <parameter key="include_special_attributes" value="false"/>
-              </operator>
-              <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.5.001" expanded="true" height="103" name="Decision Tree" width="90" x="179" y="34">
+              <operator activated="true" class="concurrency:parallel_decision_tree" compatibility="9.5.001" expanded="true" height="103" name="Decision Tree" width="90" x="45" y="34">
                 <parameter key="criterion" value="gain_ratio"/>
                 <parameter key="maximal_depth" value="10"/>
                 <parameter key="apply_pruning" value="true"/>
@@ -60,8 +46,7 @@
                 <parameter key="minimal_size_for_split" value="4"/>
                 <parameter key="number_of_prepruning_alternatives" value="3"/>
               </operator>
-              <connect from_port="training set" to_op="Select Attributes (2)" to_port="example set input"/>
-              <connect from_op="Select Attributes (2)" from_port="example set output" to_op="Decision Tree" to_port="training set"/>
+              <connect from_port="training set" to_op="Decision Tree" to_port="training set"/>
               <connect from_op="Decision Tree" from_port="model" to_port="model"/>
               <portSpacing port="source_training set" spacing="0"/>
               <portSpacing port="sink_model" spacing="0"/>
