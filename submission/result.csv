@@ -144,7 +144,7 @@ id,netgain
 825,false
 829,false
 848,false
-851,false
+851,true
 853,true
 858,false
 861,false
@@ -339,7 +339,7 @@ id,netgain
 1739,false
 1742,false
 1744,true
-1749,false
+1749,true
 1755,false
 1766,false
 1767,false
@@ -660,7 +660,7 @@ id,netgain
 3297,false
 3301,false
 3313,false
-3315,false
+3315,true
 3323,false
 3325,false
 3335,true
@@ -704,7 +704,7 @@ id,netgain
 3484,false
 3496,false
 3500,false
-3504,false
+3504,true
 3508,false
 3513,false
 3514,false
@@ -820,7 +820,7 @@ id,netgain
 4215,true
 4221,false
 4222,false
-4226,false
+4226,true
 4232,false
 4235,false
 4237,false
@@ -933,7 +933,7 @@ id,netgain
 4748,false
 4749,false
 4753,false
-4756,false
+4756,true
 4757,false
 4758,false
 4760,false
@@ -970,7 +970,7 @@ id,netgain
 4928,false
 4935,false
 4941,false
-4942,false
+4942,true
 4943,true
 4944,false
 4946,false
@@ -1185,7 +1185,7 @@ id,netgain
 5996,false
 5997,false
 6009,false
-6010,false
+6010,true
 6033,true
 6038,false
 6041,false
@@ -1252,7 +1252,7 @@ id,netgain
 6395,false
 6396,false
 6398,false
-6399,false
+6399,true
 6404,false
 6407,false
 6412,false
@@ -1285,7 +1285,7 @@ id,netgain
 6520,false
 6524,false
 6533,false
-6535,false
+6535,true
 6539,false
 6540,false
 6541,false
@@ -1508,7 +1508,7 @@ id,netgain
 7677,false
 7681,false
 7689,false
-7698,false
+7698,true
 7700,true
 7703,false
 7705,true
@@ -1705,7 +1705,7 @@ id,netgain
 8695,false
 8698,false
 8699,true
-8708,false
+8708,true
 8718,true
 8726,false
 8730,true
@@ -1765,7 +1765,7 @@ id,netgain
 8983,false
 8986,false
 9001,false
-9003,false
+9003,true
 9005,false
 9008,false
 9011,false
@@ -1778,7 +1778,7 @@ id,netgain
 9042,false
 9044,false
 9050,false
-9052,false
+9052,true
 9058,false
 9068,false
 9071,false
@@ -2035,7 +2035,7 @@ id,netgain
 10252,false
 10257,false
 10262,true
-10266,false
+10266,true
 10270,true
 10274,false
 10275,false
@@ -2233,7 +2233,7 @@ id,netgain
 11213,false
 11218,false
 11225,false
-11233,false
+11233,true
 11236,false
 11242,true
 11244,false
@@ -2272,7 +2272,7 @@ id,netgain
 11452,false
 11453,false
 11461,false
-11464,false
+11464,true
 11472,false
 11481,false
 11484,false
@@ -2896,7 +2896,7 @@ id,netgain
 14590,false
 14591,false
 14592,false
-14599,true
+14599,false
 14606,false
 14611,false
 14612,false
@@ -2922,7 +2922,7 @@ id,netgain
 14719,false
 14720,false
 14725,false
-14726,false
+14726,true
 14737,false
 14742,false
 14747,true
@@ -3072,7 +3072,7 @@ id,netgain
 15484,false
 15492,false
 15493,false
-15501,false
+15501,true
 15508,false
 15518,false
 15521,false
@@ -3345,7 +3345,7 @@ id,netgain
 16882,false
 16884,false
 16888,false
-16892,false
+16892,true
 16895,false
 16896,false
 16907,false
@@ -3545,7 +3545,7 @@ id,netgain
 17848,false
 17850,false
 17851,true
-17854,false
+17854,true
 17857,false
 17861,false
 17873,false
@@ -3604,7 +3604,7 @@ id,netgain
 18163,false
 18166,false
 18168,false
-18169,false
+18169,true
 18174,false
 18178,true
 18181,false
@@ -3685,7 +3685,7 @@ id,netgain
 18607,false
 18612,false
 18613,true
-18615,false
+18615,true
 18627,false
 18628,false
 18630,false
@@ -3700,7 +3700,7 @@ id,netgain
 18676,false
 18677,false
 18679,false
-18680,false
+18680,true
 18682,false
 18689,false
 18690,false
@@ -3880,7 +3880,7 @@ id,netgain
 19550,false
 19556,false
 19559,false
-19561,false
+19561,true
 19573,true
 19592,false
 19593,true
@@ -4220,7 +4220,7 @@ id,netgain
 21156,false
 21158,false
 21160,false
-21163,false
+21163,true
 21165,false
 21175,false
 21185,false
@@ -4256,7 +4256,7 @@ id,netgain
 21322,false
 21336,false
 21344,false
-21366,false
+21366,true
 21371,false
 21386,true
 21399,false
@@ -4285,7 +4285,7 @@ id,netgain
 21499,true
 21501,false
 21502,true
-21509,false
+21509,true
 21515,false
 21522,true
 21528,false
@@ -4302,7 +4302,7 @@ id,netgain
 21596,true
 21602,false
 21604,false
-21606,false
+21606,true
 21608,false
 21609,false
 21618,false
@@ -4631,7 +4631,7 @@ id,netgain
 23118,false
 23129,true
 23130,false
-23135,false
+23135,true
 23136,false
 23139,false
 23153,true
@@ -4747,7 +4747,7 @@ id,netgain
 23705,false
 23717,false
 23718,false
-23721,false
+23721,true
 23727,false
 23730,false
 23734,true
@@ -4821,7 +4821,7 @@ id,netgain
 24136,false
 24138,false
 24142,false
-24160,false
+24160,true
 24171,false
 24180,false
 24189,false
@@ -4971,7 +4971,7 @@ id,netgain
 24808,false
 24809,true
 24824,false
-24826,false
+24826,true
 24838,false
 24841,true
 24844,false
@@ -5045,7 +5045,7 @@ id,netgain
 25129,true
 25131,false
 25137,true
-25140,false
+25140,true
 25144,true
 25148,false
 25152,false
@@ -5144,7 +5144,7 @@ id,netgain
 25596,false
 25597,false
 25599,false
-25615,false
+25615,true
 25617,true
 25626,false
 25635,false
@@ -5202,7 +5202,7 @@ id,netgain
 25904,false
 25912,false
 25916,false
-25919,false
+25919,true
 25923,false
 25925,false
 25941,false
@@ -5220,7 +5220,7 @@ id,netgain
 25989,true
 25996,false
 26003,true
-26007,false
+26007,true
 26017,false
 26018,true
 26025,false
@@ -5279,13 +5279,13 @@ id,netgain
 26288,false
 26290,true
 26294,false
-26296,false
+26296,true
 26297,false
 26299,false
 26302,false
 26305,false
 26306,true
-26308,false
+26308,true
 26314,true
 26316,false
 26324,false
@@ -5350,7 +5350,7 @@ id,netgain
 26615,false
 26621,false
 26629,false
-26634,false
+26634,true
 26636,true
 26638,true
 26658,false
@@ -5411,7 +5411,7 @@ id,netgain
 26941,false
 26949,true
 26952,true
-26953,false
+26953,true
 26957,true
 26961,false
 26971,false
@@ -5451,7 +5451,7 @@ id,netgain
 27083,false
 27091,false
 27105,false
-27112,false
+27112,true
 27114,false
 27115,false
 27127,true
@@ -5472,7 +5472,7 @@ id,netgain
 27190,true
 27191,false
 27193,false
-27205,true
+27205,false
 27207,false
 27209,false
 27213,false
@@ -5502,7 +5502,7 @@ id,netgain
 27344,false
 27347,false
 27354,false
-27358,false
+27358,true
 27359,false
 27360,false
 27361,false
@@ -5517,7 +5517,7 @@ id,netgain
 27400,false
 27406,false
 27407,true
-27411,false
+27411,true
 27433,false
 27438,true
 27446,false
@@ -5858,7 +5858,7 @@ id,netgain
 29111,false
 29114,false
 29117,false
-29118,false
+29118,true
 29120,false
 29126,true
 29134,false
@@ -5892,7 +5892,7 @@ id,netgain
 29293,false
 29304,false
 29307,false
-29317,false
+29317,true
 29318,false
 29327,false
 29333,false
@@ -6262,7 +6262,7 @@ id,netgain
 31291,false
 31310,false
 31312,false
-31318,false
+31318,true
 31326,false
 31327,false
 31328,false
@@ -6496,7 +6496,7 @@ id,netgain
 32460,false
 32476,false
 32484,false
-32492,false
+32492,true
 32501,false
 32502,true
 32503,false
